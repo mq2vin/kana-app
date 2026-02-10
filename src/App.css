@@ -1,7 +1,13 @@
+@font-face {
+    font-family: "rdr";
+    src: url("./assets/font/chinese-rocks-rg.ttf") format("truetype");
+}
+
 .app {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    font-family: "rdr", sans-serif;
 }
 
 header {

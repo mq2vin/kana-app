@@ -42,7 +42,7 @@ function App() {
         <main>
           {/* Section Hiragana */}
           <section className="main-section">
-            <h2 className="section-title">Hiragana</h2>
+            <h1 className="section-title">Hiragana</h1>
             {rowOrder.map(row => (
                 <CharacterGrid
                     key={`hiragana-${row}`}
@@ -54,7 +54,7 @@ function App() {
 
           {/* Section Katakana */}
           <section className="main-section">
-            <h2 className="section-title">Katakana</h2>
+            <h1 className="section-title">Katakana</h1>
             {rowOrder.map(row => (
                 <CharacterGrid
                     key={`katakana-${row}`}

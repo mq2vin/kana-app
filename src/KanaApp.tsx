@@ -1,72 +1,42 @@
-import CharacterGrid from './components/CharacterGrid';
-import { kanaData } from './data/kana';
-import type { Kana } from './types/kana';
 import './KanaApp.css';
-//import {useState} from "react";
+import {useState} from "react";
+import {StudyMode} from "./components/StudyMode.tsx";
+import {QuizMode} from "./components/QuizzMode.tsx";
 
 
 export function KanaApp(){
-    const groupByRow = (kanas: Kana[]) => {
-        const grouped: Record<string, Kana[]> = {};
-        kanas.forEach(kana => {
-            if (!grouped[kana.row]) {
-                grouped[kana.row] = [];
-            }
-            grouped[kana.row].push(kana);
-        });
-        return grouped;
-    };
-
-    const groupedKana = groupByRow(kanaData);
+    const [script, setScript] = useState<'hiragana' | 'katakana'>('hiragana');
+    const [mode, setMode] = useState<'study' | 'quiz'>('study');
 
     const rowOrder = ['a', 'ka', 'sa', 'ta', 'na', 'ha', 'ma', 'ya', 'ra', 'wa', 'n', 'ga', 'za', 'da', 'ba', 'pa'];
 
-    const getHiraganaByRow = (row: string) => {
-        return groupedKana[row]?.map(kana => ({
-            character: kana.hiragana,
-            romanji: kana.romanji
-        })) || [];
+    const switchMode = (newMode: 'study' | 'quiz') => {
+        setMode(newMode);
     };
-
-    const getKatakanaByRow = (row: string) => {
-        return groupedKana[row]?.map(kana => ({
-            character: kana.katakana,
-            romanji: kana.romanji
-        })) || [];
-    };
-
-    //const [script, setScript] = useState<'hiragana' | 'katakana'>('hiragana');
 
     return (
         <div className="app">
             <header>
+                <nav>
+                    <button onClick={() => switchMode('study')}>Étude</button>
+                    <button onClick={() => switchMode('quiz')}>Quiz</button>
+                </nav>
                 <h1>Apprentissage du Japonais - Kana</h1>
             </header>
 
             <main>
-                {/* Section Hiragana */}
-                <section className="main-section">
-                    <h1 className="section-title">Hiragana</h1>
-                    {rowOrder.map(row => (
-                        <CharacterGrid
-                            key={`hiragana-${row}`}
-                            characters={getHiraganaByRow(row)}
-                            title={`Ligne ${row.toUpperCase()}`}
-                        />
-                    ))}
-                </section>
+                {mode === 'study' &&
+                    <>
+                        <input type="radio" name="japanese" id="hiragana" onClick={() => setScript('hiragana')}/>
+                        <label htmlFor="hiragana">hiragana</label>
 
-                {/* Section Katakana */}
-                <section className="main-section">
-                    <h1 className="section-title">Katakana</h1>
-                    {rowOrder.map(row => (
-                        <CharacterGrid
-                            key={`katakana-${row}`}
-                            characters={getKatakanaByRow(row)}
-                            title={`Ligne ${row.toUpperCase()}`}
-                        />
-                    ))}
-                </section>
+                        <input type="radio" name="japanese" id="katakana" onClick={() => setScript('katakana')}/>
+                        <label htmlFor="katakana">katakana</label><br/>
+                        <StudyMode script={script} rowOrder={rowOrder}/>
+                    </>
+                }
+                {mode === 'quiz' && <QuizMode script={script}/>}
+
             </main>
         </div>
     );

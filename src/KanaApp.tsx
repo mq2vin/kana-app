@@ -27,7 +27,7 @@ export function KanaApp(){
             <main>
                 {mode === 'study' &&
                     <>
-                        <input type="radio" name="japanese" id="hiragana" onClick={() => setScript('hiragana')}/>
+                        <input type="radio" name="japanese" id="hiragana" onClick={() => setScript('hiragana') }/>
                         <label htmlFor="hiragana">hiragana</label>
 
                         <input type="radio" name="japanese" id="katakana" onClick={() => setScript('katakana')}/>

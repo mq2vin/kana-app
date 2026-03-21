@@ -17,11 +17,11 @@ export function KanaApp(){
     return (
         <div className="app">
             <header>
+                <h1>Apprentissage du Japonais - Kana</h1>
                 <nav>
                     <button onClick={() => switchMode('study')}>Étude</button>
                     <button onClick={() => switchMode('quiz')}>Quiz</button>
                 </nav>
-                <h1>Apprentissage du Japonais - Kana</h1>
             </header>
 
             <main>

@@ -42,28 +42,23 @@ export function useQuiz({ kanaData, script }: UseQuizProps): UseQuizReturn {
 
     const inputQuizzRef = useRef<HTMLInputElement>(null);
 
-    // MÉMORISATION : Le tableau mélangé ne se recalculera que si kanaData change
     const shuffledKanaData = useMemo(() => {
         console.log('🔄 Mélange des kanaData (useMemo)');
         return shuffleArray(kanaData);
     }, [kanaData]); // Dépendance : kanaData
 
-    // Récupérer le kana courant depuis le tableau mélangé
     const currentKana = shuffledKanaData[currentIndex];
 
-    // MÉMORISATION : Le caractère à afficher (évite un recalcul inutile)
     const displayChar = useMemo(() => {
         return script === 'hiragana'
             ? currentKana?.hiragana
             : currentKana?.katakana;
     }, [script, currentKana]);
 
-    // MÉMORISATION : La progression (pour éviter le recalcul à chaque render)
     const progress = useMemo(() => {
         return (score.total / shuffledKanaData.length) * 100;
     }, [score.total, shuffledKanaData.length]);
 
-    // Mettre à jour le meilleur score quand le score courant change
     useEffect(() => {
         if (score.correct > bestScore) {
             setBestScore(score.correct);

@@ -67,7 +67,6 @@ export function QuizMode({ script }: QuizModeProps) {
                         onChange={e => setUserAnswer(e.target.value)}
                         placeholder="Entrez le romanji..."
                         className="quiz-input"
-                        autoFocus
                         autoComplete="off"
                     />
                     <button

@@ -27,10 +27,20 @@ export function KanaApp(){
             <main>
                 {mode === 'study' &&
                     <>
-                        <input type="radio" name="japanese" id="hiragana" onClick={() => setScript('hiragana') }/>
+                        <input
+                            type="radio"
+                            name="japanese"
+                            id="hiragana"
+                            checked={script === 'hiragana'}
+                            onChange={() => setScript('hiragana') }/>
                         <label htmlFor="hiragana">hiragana</label>
 
-                        <input type="radio" name="japanese" id="katakana" onClick={() => setScript('katakana')}/>
+                        <input
+                            type="radio"
+                            name="japanese"
+                            id="katakana"
+                            checked={script === 'katakana'}
+                            onChange={() => setScript('katakana')}/>
                         <label htmlFor="katakana">katakana</label><br/>
                         <StudyMode script={script} rowOrder={rowOrder}/>
                     </>

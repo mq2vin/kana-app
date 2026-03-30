@@ -17,7 +17,7 @@ export function KanaApp(){
 
     return (
         <div className="app">
-            <Header title={"Apprentissage du Japonais - Kana"}>
+            <Header title={"Apprentissage du Japonais - Kana app"}>
                 <button onClick={() => switchMode('study')}>Étude</button>
                 <button onClick={() => switchMode('quiz')}>Quiz</button>
             </Header>

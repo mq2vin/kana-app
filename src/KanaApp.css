@@ -29,7 +29,8 @@ nav {
 }
 
 /* ── Boutons nav (Étude / Quiz) ── */
-button {
+button,
+input[type="submit"] {
     position: relative;
     padding: 0.6rem 2rem;
     font-family: "rdr", sans-serif;
@@ -43,10 +44,12 @@ button {
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+button{
     width: 105px;
     height: 39px;
 }
-
 
 
 button span,
@@ -55,21 +58,25 @@ button {
     z-index: 1;
 }
 
-button:hover {
+button:hover,
+input[type="submit"]:hover{
     background: #16a085;
     box-shadow: 0 3px 0 #0e6655;
     transform: translateY(-4px);
 }
 
-button:hover::before {
+button:hover::before,
+input[type="submit"]:hover::before{
     transform: scaleX(1);
 }
 
-button:active {
+button:active,
+input[type="submit"]:active{
     transform: scale(0.97);
 }
 
-button.active {
+button.active,
+input[type="submit"].active{
     background: #2c3e50;
     color: #fff;
 }

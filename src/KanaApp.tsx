@@ -2,6 +2,7 @@ import './KanaApp.css';
 import {useState} from "react";
 import {StudyMode} from "./components/StudyMode.tsx";
 import {QuizMode} from "./components/QuizzMode.tsx";
+import {Header} from "./components/Header.tsx";
 
 
 export function KanaApp(){
@@ -16,18 +17,15 @@ export function KanaApp(){
 
     return (
         <div className="app">
-            <header>
-                <h1>Apprentissage du Japonais - Kana</h1>
-                <nav>
-                    <button onClick={() => switchMode('study')}>Étude</button>
-                    <button onClick={() => switchMode('quiz')}>Quiz</button>
-                </nav>
-            </header>
+            <Header title={"Apprentissage du Japonais - Kana"}>
+                <button onClick={() => switchMode('study')}>Étude</button>
+                <button onClick={() => switchMode('quiz')}>Quiz</button>
+            </Header>
 
             <main>
                 {mode === 'study' &&
                     <>
-                        <input
+                    <input
                             type="radio"
                             name="japanese"
                             id="hiragana"

@@ -4,10 +4,16 @@
 }
 
 .app {
-    max-width: 1200px;
+    /*max-width: 1200px;*/
     margin: 0 auto;
     padding: 2rem;
     font-family: "rdr", sans-serif;
+}
+
+main{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
 }
 
 header {
@@ -23,7 +29,7 @@ nav {
 }
 
 /* ── Boutons nav (Étude / Quiz) ── */
-nav button {
+button {
     position: relative;
     padding: 0.6rem 2rem;
     font-family: "rdr", sans-serif;
@@ -37,31 +43,33 @@ nav button {
     cursor: pointer;
     overflow: hidden;
     transition: transform 0.1s ease, box-shadow 0.1s ease;
+    width: 105px;
+    height: 39px;
 }
 
 
 
-nav button span,
-nav button {
+button span,
+button {
     position: relative;
     z-index: 1;
 }
 
-nav button:hover {
+button:hover {
     background: #16a085;
     box-shadow: 0 3px 0 #0e6655;
     transform: translateY(-4px);
 }
 
-nav button:hover::before {
+button:hover::before {
     transform: scaleX(1);
 }
 
-nav button:active {
+button:active {
     transform: scale(0.97);
 }
 
-nav button.active {
+button.active {
     background: #2c3e50;
     color: #fff;
 }
@@ -487,4 +495,9 @@ h1 {
     .score-value {
         font-size: 1.5rem;
     }
+}
+
+.header-title-container{
+    display: flex;
+    justify-content: space-between;
 }
